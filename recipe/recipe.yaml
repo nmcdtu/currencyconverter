@@ -1,0 +1,42 @@
+context:
+  version: "0.18.8"
+
+package:
+  name: "currencyconverter"
+  version: ${{ version }}
+
+source:
+  path: ..
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - pip install . --no-deps --no-build-isolation --ignore-installed
+
+requirements:
+  host:
+    - python >=3.9
+    - pip
+    - setuptools >=71
+    - setuptools-scm >=8
+
+  run:
+    - python >=3.9
+
+tests:
+  - python:
+      pip_check: true
+      imports:
+        - currency_converter
+
+about:
+  homepage: https://github.com/alexprengere/currencyconverter
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: "A currency converter using the European Central Bank data."
+  description: |
+    A currency converter using the European Central Bank data. This package
+    allows for easy conversion between different currencies based on daily
+    and historical data from the ECB.
+  repository: https://github.com/nmcdtu/currencyconverter
